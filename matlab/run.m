@@ -4,3 +4,8 @@
 %
 % Dan Stefanov, 2013
 
+in_image = imread ('in.bmp');
+
+ref_image = bf_ref (in_image);
+
+imwrite (ref_image, 'ref.bmp');
