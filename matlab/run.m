@@ -9,7 +9,7 @@ in_image = imread ('in.bmp');
 ref_image = imread ('ref.bmp');
 
 % filltering
-filt_image = bf_opt (in_image, sigma);
+filt_image = bf_opt (in_image, sigma, radius);
 
 % writing result
 imwrite (filt_image, 'filt.bmp');
