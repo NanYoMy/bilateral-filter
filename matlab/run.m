@@ -4,8 +4,16 @@
 %
 % Dan Stefanov, 2013
 
+% input data
 in_image = imread ('in.bmp');
+ref_image = imread ('ref.bmp');
 
-ref_image = bf_ref (in_image);
+% filltering
+filt_image = bf_opt (in_image, sigma);
 
-imwrite (ref_image, 'ref.bmp');
+% writing result
+imwrite (filt_image, 'filt.bmp');
+
+% optimization algorith error
+filt_error = norm(double(filt_image-ref_image)) / norm(double(ref_image));
+display (['error: ' num2str(filt_error)]);
