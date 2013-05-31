@@ -8,7 +8,7 @@ function [filt_image_fxp] = bf_opt (input_image, sigma, r)
     [extended_image_fxp, od] = extend_image (input_image, r);
     his_image = double(divide_image (extended_image_fxp));
     extended_image = double (extended_image_fxp); 
-    his_filt_image = deriche_filter (his_image, pi / sigma.r);
+    his_filt_image = deriche_filter (his_image, pi /2/ sigma.r);
     
     [mask_h, mask_k] = comp_mask (extended_image, sigma.r);
     filt_image_h = squeeze (sum (mask_h.*his_filt_image,1));
@@ -33,7 +33,7 @@ function [mask_h, mask_k] = comp_mask(in_im,sigma)
    ext_im (1,:,:) = in_im;
    arg1 = repmat (ext_im, [256 1 1]);
    arg = arg1 - arg0;
-   mask_k = exp (-(arg/sigma).^2);
+   mask_k = exp (-0.5*(arg/sigma).^2);
    mask_h = mask_k .* arg0;  
 end
 

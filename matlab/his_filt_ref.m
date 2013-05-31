@@ -24,6 +24,6 @@ end
 
 function [mask] = comp_mask (sigma,r)
     line = (-r):r;
-    mask = exp(-(line/sigma).^2);
+    mask = exp(-0.5*(line/sigma).^2);
 end
 

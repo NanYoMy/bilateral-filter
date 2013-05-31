@@ -24,7 +24,7 @@ end
 % creates gaus mask
 function [mask] = comp_filter_mask (sigma,r)
     line = -r:r;
-    line_mask = exp (-(line / sigma).^2);
+    line_mask = exp (-0.5*(line / sigma).^2);
     mask = line_mask' * line_mask;
 end
 
@@ -47,5 +47,5 @@ end
 
 
 function [gaus_im] = comp_gaus (window, f_p0, sigma)
-    gaus_im = exp (-((window-f_p0)/sigma).^2);
+    gaus_im = exp (-0.5*((window-f_p0)/sigma).^2);
 end
