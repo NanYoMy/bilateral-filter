@@ -20,7 +20,7 @@ function [filtered_image] = deriche_filter(image, alpha)
     
     filtered_image = zeros(size(image));
     for layer = 1:size(image,1)
-        temp = treat(image(layer,:,:), a(1:4), b, c(1));
+        temp = treat(squeeze(image(layer,:,:)), a(1:4), b, c(1));
         filtered_image(layer,:,:) = (treat(temp', a(5:8), b, c(2)))'; 
     end
 end
